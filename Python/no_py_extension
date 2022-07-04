@@ -1,0 +1,4 @@
+#!/usr/bin/python
+print("What do you mean")
+x=int(input("Enter a no"))
+print(x)

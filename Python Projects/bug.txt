@@ -1,0 +1,45 @@
+#### Environment details (Put `x` in the checkbox along with the information)
+
+- [x] Operating System: Manjaro Linux
+- [x] Desktop Environment: Xfce
+- [x] Terminal Emulator: Alarcitty
+- [x] Shell: zsh
+- [ ] Custom desktop opener (if applicable):
+- [ ] Program options used:
+- [ ] Configuration options set:
+- [ ] Plugins are installed
+- [ ] Issue exists on `nnn` master
+
+#### Exact steps to reproduce the issue
+I'm having a directory with name : `VS Code` i.e. the directory name has space in it.
+Suppose I want to copy complete path of a file that is inside this `VS Code` directory.
+
+I used nnn -x to copy the path to clipboard it returned : 
+
+```
+/home/himanshu/Desktop/VS Code/myfile.py
+```
+Now if tried to open this file using neovim :
+```
+nvim /home/himanshu/Desktop/VS Code/myfile.py
+```
+then neovim will consider them as two different files : 
+/home/himanshu/Desktop/VS
+Code/myfile.py
+
+### The right address that should be returned for usage is:
+```
+/home/himanshu/Desktop/VS\ Code/myfile.py
+```
+
+This address returning with space is a problem with other commands as well:
+
+**For Ex:**
+If i tried to list paths using `ls -l $(nnn -p -)` and i selected :
+VS Code - a directory
+config.toml - a file
+config.... - another file
+
+![image](https://user-images.githubusercontent.com/96357852/163189783-3f5b3461-5031-4c17-8f77-860a7ead7482.png)
+
+**Note:** _**This is only a problem when using these paths is shell.  Because i've used these paths in python and they work well**_
