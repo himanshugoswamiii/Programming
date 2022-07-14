@@ -33,6 +33,8 @@ public:
     }
     void getinfo()
     {
+
+        cout<<"\n";
         cout<<"Record details:"<<endl;
         cout<<"Key:"<<key<<endl;
         cout<<"Name:"<<name<<endl;
@@ -42,6 +44,7 @@ public:
         cout<<"Vehicle Type:"<<vtype;
         cout<<"\nAmount of Petrol:"<<petrol;
         cout<<"\nFill-up for Petrol"<<air;
+        cout<<"\n";
     }
 
     void petrol_req(){
@@ -51,7 +54,7 @@ public:
 };
 
 // To create the key from the time stamp
-string string_cutter(string s)
+string ch_string(string s)
 {
     s.erase(0,10); // Delete the date
     s.erase(s.begin()+2);
@@ -93,6 +96,31 @@ void insertionSortAsc(dataa Arr[],int l){
 
 }
 
+void addSort(int Arr[][2],int l){
+    // First is the address in the hash table and second is the data
+    int key[2];
+    int j;
+    for(int i=1; i<=l-1; i++){
+        key[1]=Arr[i][1];
+        key[0]=Arr[i][0];
+        j=i-1;
+        while (j>=0 && Arr[j][1]>key[1]) {
+            Arr[j+1][1]=Arr[j][1];
+            Arr[j+1][0]=Arr[j][0];
+            j--;
+
+        }
+        Arr[j+1][1]=key[1];
+        Arr[j+1][0]=key[0];
+    }
+
+    // Printing the Sorted DATA
+
+
+
+
+}
+
 
 // Main Function
 int main()
@@ -100,7 +128,9 @@ int main()
     int size,i=0;
     cout<<"Enter the no of records you have in your .csv file: ";
     cin>>size;
+
     Record r[size]; // Making Objects of Record
+
     // We're not making link list here, because we want fast retrieval of data using
     // HASH - MAP
 
@@ -120,7 +150,7 @@ int main()
         getline(ip,a7,',');
         getline(ip,a8,'\n');
 
-        s=string_cutter(a1);
+        s=ch_string(a1);
         r[i].insert(s,a2,a3,a4,a5,a6,a7,a8);
         i++; // Next time the value will go into next objects
     }
@@ -131,8 +161,8 @@ int main()
     int choice;
     while(1)
     {
-        cout<<endl<<"***** PETROL PUMP ****"<<endl;
-        cout<<"1). Display the current queue \n2). Sort Data according to petrol amount\n3). Display all records\n4). Display Hahsmap\n5). Display each person with individual Petrol requirements \n6). Exit\nEnter your choice:";
+        cout<<endl<<"-------- PETROL PUMP -------" <<endl;
+        cout<<"1). Display the current queue \n2). Sort Data according to petrol amount\n3). Display all records\n4). Display Hahsmap\n5). Display each person with individual Petrol requirements \n6). Press 6 to Sort Data and show all the information using HASHMAP (Important) \n7). Exit\nEnter your choice:";
         cin>>choice;
         switch (choice) {
             case 1:{
@@ -176,6 +206,27 @@ int main()
                     }
                     break;
                 }
+
+            case 6:
+                {
+
+                    int A[size][2];
+                    for (int i = 0; i < size; i++) {
+                        A[i][0]=r[i].key;
+                        A[i][1]=r[i].petrol;
+                    }
+                    addSort(A,size);
+                    // Printing the Sorted array
+                    int index;
+                    int user_key;
+                    for (int i = 0; i < size ; i++) {
+                            user_key=A[i][0];
+                            index=hash.search(user_key);
+                            r[index].getinfo();
+                    }
+                    break;
+                }
+
             default:
                 ip.close();
                 exit(1);

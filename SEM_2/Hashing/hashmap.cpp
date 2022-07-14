@@ -1,6 +1,6 @@
 #include<iostream>
 using namespace std;
-const int len=30;
+#define len 30
 class node{
   public:
     int key;
@@ -71,11 +71,11 @@ class hashmap
     node* temp=NULL;
     for(int i=0;i<len;i++)
     {
-        cout<<i<<"-->";
+        cout<<i<<" ----> ";
         temp=htable[i];
         while(temp!=NULL)
         {
-            cout<<temp->key<<" ";
+            cout<<temp->key<<"  ";
             temp=temp->next;
         }
         cout<<endl;
