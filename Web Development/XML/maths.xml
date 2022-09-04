@@ -1,0 +1,7 @@
+<book>
+    <title>MY book</title>
+    <section>2 &gt; 5 = false </section>
+    <section>- 5 &lt; 6 = true </section>
+    <section>- 1 &amp; &amp; 0 = 0 </section>
+    <!-- - 5 &times; 4 = 20 -->
+</book>
