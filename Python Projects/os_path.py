@@ -9,7 +9,7 @@ else:
     print("Doesn't Exists")
 
 # Check if the given file exists
-file_path='/home/himanshu/Desktop/Programming/Python\ Projects/new.txt'
+file_path='/home/himanshu/Desktop/Programming/Python Projects/new.txt'
 if os.path.isfile(file_path):
     print("Exists")
 else:

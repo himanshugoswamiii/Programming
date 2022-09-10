@@ -13,5 +13,13 @@ def about(request):
     return HttpResponse("this is about page")
 
 def contact(request):
-    return HttpResponse("this is contact page")
+    return render(request, 'contact.html')
+    # return HttpResponse("this is Contact page")
+
+def services(request):
+    return render(request, 'services.html')
+
+def code(request):
+    return render(request, 'code.html')
+
     
