@@ -16,6 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 
+# added for file handling
+from django.conf import settings
+from django.conf.urls.static import static
+
 admin.site.site_header = "Harry Ice Cream admin"
 admin.site.site_title = "Harry Ice Cream Portal"
 admin.site.index_title = "Welcome to Harry Ice Creams"
@@ -24,3 +28,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls'))
 ]
+
+## added for file handling
+urlpatterns += static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+
