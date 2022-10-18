@@ -8,4 +8,4 @@ elif x==2 or x==3:
     print(type(x))
 else :
     exit()
-    print(type(x))
+print("What is this");

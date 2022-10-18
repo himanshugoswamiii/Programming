@@ -1,4 +1,5 @@
 #include <iostream>
+#include "vector"
 using namespace std;
 int main ()
 {
@@ -18,6 +19,8 @@ int main ()
     *iptr*=5;
     cout << x << endl;
 
+    cout<<"What is thi";
+    
     // Changing integer with character
     *iptr='c';
     cout << x << endl;
