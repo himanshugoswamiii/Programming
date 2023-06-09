@@ -5,6 +5,7 @@ Data_Structures/
 __pycache__/
 *.py[cod]
 *$py.class
+.cache/
 
 # C extensions
 *.so

@@ -1,0 +1,6 @@
+#!/usr/bin/env python
+print("Hello World")
+
+x = input("Enter your number : ")
+print(x)
+
